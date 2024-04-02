@@ -2,6 +2,7 @@
 
 ## New Features
 
+- Add arbitrary configuration option for S3 Storage Backend Boto3 calls `PR #1697`
 - Added HTTPS support in Docker Compose + Enabled bind-mount volume for Nginx config + add documentation in README.md (PR #1653)
 
 ## Documentation
@@ -222,16 +223,16 @@
 Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work in PR #591
 
 - New generic Mirror class to perform Python metadata syncing
-  - *(previous Mirror class has been renamed to BandersnatchMirror)*
+  - _(previous Mirror class has been renamed to BandersnatchMirror)_
 - Package's filter methods are now part of its public API
 - New `errors.py` file to house Bandersnatch specific errors
 
 ## Internal API Changes
 
-- Old Mirror class has been renamed to BandersnatchMirror.  Performs same functionality with use of new Mirror API.
+- Old Mirror class has been renamed to BandersnatchMirror. Performs same functionality with use of new Mirror API.
 - BandersnatchMirror now performs all filesystem operations throughout the sync process including the ones previously
   in Package.
-- Package no longer performs filesystem operations.  Properties `json_file`, `json_pypi_symlink`, `simple_directory`
+- Package no longer performs filesystem operations. Properties `json_file`, `json_pypi_symlink`, `simple_directory`
   and methods `save_json_metadata`, `sync_release_files`, `gen_data_requires_python`, `generate_simple_page`,
   `sync_simple_page`, `_save_simple_page_version`, `_prepare_versions_path`, `_file_url_to_local_url`,
   `_file_url_to_local_path`, `download_file` have all been moved into BandersnatchMirror. Package's `sync` has been
@@ -252,7 +253,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 # 4.1.0 (2020-8-9)
 
-*Storage abstraction refactor + Type Annotating!*
+_Storage abstraction refactor + Type Annotating!_
 
 ## New Features
 
@@ -263,7 +264,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 - Added new allowlist filter - `PR #626` - Thanks **@gerrod3**
 - Make webdir/pypi/json/PKG symlinks relative - `PR #637` - Thanks **@indrat**
   - Makes mirror files more portable
-- Add __main__ and program name override to ArgumentParser - `PR #643` - Thanks **@rkm**
+- Add **main** and program name override to ArgumentParser - `PR #643` - Thanks **@rkm**
   - Allow non pkg_resources install to work
 
 ## Internal API Changes
@@ -278,12 +279,12 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 ## Bug Fixes
 
 - Fixed allow/blocklist release filtering pre-releases - `PR #641` - Thanks **@gerrod3**
-- Casefold *(normalize per PEP503)* package names in blacklist/whitelist plugins config - `PR #629` - Thanks **@lepaperwan**
+- Casefold _(normalize per PEP503)_ package names in blacklist/whitelist plugins config - `PR #629` - Thanks **@lepaperwan**
 - Fix passing package info to filters in verify action. `PR #638` - Thanks **@indrat**
 - Fix todo file removal - `PR #571`
 - Introduce a new `global-timeout` config option for aiohttp coroutines - Default 5 hours - `PR #540` - Thanks **@techalchemy**
 - Many doc fixes - `PRs #542 #551 #557 #605 #628 #630` - Thanks **@pgrimaud** + **@ichard26** + **@hugovk**
-- Move to setting timeout only on session + 10 * total_timeout (over sock timeouts) - `PR #535`
+- Move to setting timeout only on session + 10 \* total_timeout (over sock timeouts) - `PR #535`
 - Stop using `include_package_data` option in setup.cfg to get config files included in more installs - `PR #519`
 
 ## 4.0.3 (2020-5-7)
@@ -306,7 +307,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 # 4.0.0 (2020-3-29)
 
-*asyncio aiohttp refactor*
+_asyncio aiohttp refactor_
 
 - Replace requests with aiohttp - `PR #440`
   - Replace xmlrpc2 with aiohttp-xmlrpc - `PR #404`
@@ -316,7 +317,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 - Autobuild Docker images with master - `PR #88` - Thanks **@abitrolly**
 - Only print conf deprecations if found in config - `PR #327`
 - Add PyPI metadata and Python version plugin filters - `PR #391` - Thanks **@TemptorSent**
-- Add in *GitHub Actions CI* for Linux (Ubuntu), MacOSX + Windows
+- Add in _GitHub Actions CI_ for Linux (Ubuntu), MacOSX + Windows
 
 # 3.6.0 (2019-09-24)
 
@@ -349,7 +350,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 # 3.3.0 (2019-04-11)
 
 - Add latest version and specific platform plugins - `Fixes #49` - Thanks **@rene-d**
-- Generate data-requires-python attributes in index.html  - `Fixes #68` - Thanks **@z4yx**
+- Generate data-requires-python attributes in index.html - `Fixes #68` - Thanks **@z4yx**
 - Make package filtering logging less noisy when disabled - `Fixes #146`
 - Many pyup.io dependency upgrades
 
@@ -365,7 +366,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 ### Known Bug
 
-- From 3.0.0 we've been implicitly turning on *ALL* plugins - This version reverses that
+- From 3.0.0 we've been implicitly turning on _ALL_ plugins - This version reverses that
 
 ## 3.1.3 (2018-12-26)
 
@@ -374,7 +375,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 ## 3.1.2 (2018-12-02)
 
-- Load default config or passed in config file only *(not both)* - `Fixes #95` - Thanks **@GreatBahram**
+- Load default config or passed in config file only _(not both)_ - `Fixes #95` - Thanks **@GreatBahram**
 - Add `--force-check` to mirror to enable full PyPI Syncs - `Fixes #97` - Thanks **@GreatBahram**
 
 ## 3.1.1 (2018-11-25)
@@ -391,11 +392,11 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 ## 3.0.1 (2018-10-30)
 
-- Fix setup.py *url* to point at GitHub (https://github.com/pypa/bandersnatch)
+- Fix setup.py _url_ to point at GitHub (https://github.com/pypa/bandersnatch)
 
 # 3.0.0 (2018-10-30)
 
-- Move to asyncio executors around request calls `Fixes #81` *(on BitBucket)*
+- Move to asyncio executors around request calls `Fixes #81` _(on BitBucket)_
 - Use platform.uname() to support Windows `Fixes #19`
 - Add **bandersnatch verify** subcommand to re-download + delete unneeded packages `Fixes #8` + many follow on Issues during testing - Thanks **electricworry** & **tau3** for testing + fixes!
 - Introduce much more Lint checks (black, isort, mypy) other than flake8 - Thanks **@asottile**
@@ -419,7 +420,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
 ## 2.1.3 (2018-03-04)
 
-- Change version from using pkg_resources and set it in package __init__.py.
+- Change version from using pkg_resources and set it in package **init**.py.
   `Fixes #98`.
 - Add ability to blacklist packages to sync via conf file. `Fixes #100`.
 
@@ -447,7 +448,7 @@ Thanks to RedHat engineers **@dalley** + **@gerrod3** for all this refactor work
 
   Official support starts with Python 3.5 but might get away with using an
   earlier version of Python 3 (maybe 3.3 or so). However, we plan to start
-  using Python 3.5 features (like *asyncio*) in the near future, so please
+  using Python 3.5 features (like _asyncio_) in the near future, so please
   be advised that running with an older version of Python 3 is not
   a supported option for the long term.
 

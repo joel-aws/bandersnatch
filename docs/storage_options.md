@@ -32,6 +32,7 @@ To enable S3 support the optional `s3` install must be done:
 
 - `pip install bandersnatch[s3]`
 - Add a `[s3]` section in the bandersnatch config file
+- Prefix keys with `config_param_` to add the key and value to the underlying Boto3 S3 calls
 
 You will need an [AWS account](https://aws.amazon.com/console/) and an [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
 
@@ -55,6 +56,8 @@ aws_secret_access_key = your s3 secret access key
 endpoint_url = endpoint url
 # Optional manual signature version for compatibility
 signature_version = s3v4
+# Optional use SSE-S3 in the boto3 calls
+config_param_ServerSideEncryption = AES256
 ```
 
 ### Serving your Mirror
